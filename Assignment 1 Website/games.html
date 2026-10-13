@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore racing and shooter games on VirtualBoat.">
+  <title>Explore Games | VirtualBoat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark site-nav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Virtual<span>Boat</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavigation" aria-controls="siteNavigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteNavigation">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="games.html">Explore games</a></li>
+            <li class="nav-item"><a class="nav-link" href="join.html">Join the group</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <div class="container py-5">
+        <p class="eyebrow">The game guide</p>
+        <h1>Choose your next <span>adventure.</span></h1>
+        <p class="intro-copy">Filter the list by style or search for a title. Select a game to learn a little more.</p>
+      </div>
+    </section>
+
+    <section class="section-pad pt-4">
+      <div class="container">
+        <div class="game-controls">
+          <div class="filter-group" role="group" aria-label="Filter games by category">
+            <button class="btn filter-button active" type="button" data-filter="all" aria-pressed="true">All games</button>
+            <button class="btn filter-button" type="button" data-filter="racing" aria-pressed="false">Racing</button>
+            <button class="btn filter-button" type="button" data-filter="shooter" aria-pressed="false">Shooters</button>
+          </div>
+          <div class="search-wrap">
+            <label for="gameSearch" class="form-label">Search games</label>
+            <input class="form-control" type="search" id="gameSearch" placeholder="Try a game title or style" autocomplete="off">
+          </div>
+        </div>
+        <p class="results-count" id="resultsCount" aria-live="polite"></p>
+        <div class="row g-4" id="gamesGrid" aria-live="polite"></div>
+        <p class="empty-state d-none" id="emptyState">No games match your search. Try another title or category.</p>
+      </div>
+    </section>
+
+    <section class="join-banner">
+      <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div>
+          <p class="eyebrow">The best way to play is side by side whether on the track or in the arena.</p>
+          <h2>Join the group at VirtualBoat.</h2>
+        </div>
+        <a class="btn btn-light btn-lg" href="join.html">Join the group</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between gap-2">
+      <span>VirtualBoat · A community game guide</span>
+      <span>Find your game. Find your people.</span>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="gameDetailsModal" tabindex="-1" aria-labelledby="gameDetailsTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content game-modal">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow mb-1" id="gameDetailsGenre"></p>
+            <h2 class="modal-title fs-4" id="gameDetailsTitle"></h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="gameDetailsDescription"></p>
+          <p class="mb-0"><strong>Style:</strong> <span id="gameDetailsStyle"></span></p>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-primary" href="join.html">Join the community</a>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
