@@ -312,6 +312,14 @@ h1 span {
   position: relative;
 }
 
+.game-art-image {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
 .game-art::before,
 .game-art::after {
   border: 1px solid rgba(38, 61, 49, 0.2);
@@ -332,6 +340,11 @@ h1 span {
   right: 2rem;
   top: 1rem;
   width: 7rem;
+}
+
+.game-art.has-image::before,
+.game-art.has-image::after {
+  display: none;
 }
 
 .game-art.racing-art {
@@ -358,6 +371,11 @@ h1 span {
   position: relative;
   text-transform: uppercase;
   z-index: 1;
+}
+
+.game-art.has-image .game-art-label {
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .genre-badge {
@@ -534,6 +552,14 @@ h1 span {
 
 .game-modal .modal-header {
   padding-top: 1.5rem;
+}
+
+.game-gallery-image {
+  aspect-ratio: 16 / 9;
+  border-radius: 0.35rem;
+  display: block;
+  object-fit: cover;
+  width: 100%;
 }
 
 .signup-toast {
