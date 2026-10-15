@@ -5,6 +5,24 @@ const games = [
     genre: "Racing",
     style: "Driving simulation",
     artClass: "racing-art",
+    images: [
+      {
+        src: "images/assetto-corsa/assetto-blue-hypercar.png",
+        alt: "Blue hypercar cruising beside the coast."
+      },
+      {
+        src: "images/assetto-corsa/assetto-white-sports-car.png",
+        alt: "White sports car speeding along a circuit."
+      },
+      {
+        src: "images/assetto-corsa/assetto-track-drift.png",
+        alt: "A pack of cars drifting around a race circuit."
+      },
+      {
+        src: "images/assetto-corsa/assetto-night-race.png",
+        alt: "Cars racing together on a wet track at night."
+      }
+    ],
     description: "A driving simulator for players who enjoy focusing on car handling, track time, and the details of a race."
   },
   {
@@ -13,6 +31,20 @@ const games = [
     genre: "Racing",
     style: "Open-world racing",
     artClass: "forza-art",
+    images: [
+      {
+        src: "images/forza/forza-drift.jpg",
+        alt: "Cars drifting together on a road."
+      },
+      {
+        src: "images/forza/forza-car-meet.jpg",
+        alt: "A group of customized cars gathered at a meet."
+      },
+      {
+        src: "images/forza/forza-coastal-cars.jpg",
+        alt: "Customized cars lined up beside the coast at sunset."
+      }
+    ],
     description: "An open-world racing pick for players who want to explore, collect cars, and take on road events."
   },
   {
@@ -21,6 +53,12 @@ const games = [
     genre: "Shooter",
     style: "Tactical team shooter",
     artClass: "shooter-art",
+    images: [
+      {
+        src: "images/counter-strike-2/counter-strike-2-match.jpg",
+        alt: "A Counter-Strike 2 player posing alongside a large yellow chick in-game."
+      }
+    ],
     description: "A team-based tactical shooter where communication, careful aim, and round-by-round decisions matter."
   },
   {
@@ -29,6 +67,12 @@ const games = [
     genre: "Shooter",
     style: "Co-op extraction shooter",
     artClass: "arc-art",
+    images: [
+      {
+        src: "images/arc-raiders/arc-raiders-key-art.jpg",
+        alt: "ARC Raiders key art featuring three raiders."
+      }
+    ],
     description: "A cooperative action shooter focused on exploring dangerous spaces, working as a team, and making it back safely."
   }
 ];
@@ -41,7 +85,8 @@ function createGameCard(game) {
   return `
     <div class="col-sm-6 col-xl-3 game-card" data-game-id="${game.id}" data-genre="${game.genre.toLowerCase()}" data-search="${game.title.toLowerCase()} ${game.genre.toLowerCase()} ${game.style.toLowerCase()}">
       <article class="card">
-        <div class="game-art ${game.artClass}" aria-hidden="true">
+        <div class="game-art ${game.artClass}${game.images ? " has-image" : ""}" aria-hidden="true">
+          ${game.images ? `<img class="game-art-image" src="${game.images[0].src}" alt="">` : ""}
           <span class="game-art-label">${game.genre} / VirtualBoat</span>
         </div>
         <div class="card-body">
@@ -115,6 +160,14 @@ function showGameDetails(gameId) {
   document.querySelector("#gameDetailsTitle").textContent = game.title;
   document.querySelector("#gameDetailsDescription").textContent = game.description;
   document.querySelector("#gameDetailsStyle").textContent = game.style;
+  const gallery = document.querySelector("#gameDetailsGallery");
+  gallery.innerHTML = game.images
+    ? game.images.map((image) => `
+      <div class="col-12 col-md-4">
+        <img class="game-gallery-image" src="${image.src}" alt="${image.alt}">
+      </div>`).join("")
+    : "";
+  gallery.classList.toggle("d-none", !game.images);
   window.bootstrap.Modal.getOrCreateInstance(modalElement).show();
 }
 
